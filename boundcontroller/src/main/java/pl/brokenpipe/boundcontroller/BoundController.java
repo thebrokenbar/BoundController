@@ -49,14 +49,9 @@ public abstract class BoundController<V extends ViewDataBinding> extends Control
         int layoutId = getLayoutId();
         
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false);
-        return binding.getRoot();
-    }
-
-    @Override
-    protected void onAttach(@NonNull View view) {
-        super.onAttach(view);
         onViewBound(binding);
         binding.executePendingBindings();
+        return binding.getRoot();
     }
 
     private int getLayoutId() {
